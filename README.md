@@ -13,9 +13,11 @@ I believe note-taking helps me learn more. Therefore, I create this repository t
 <br />
 
 # Structure of this Repository
-* Operator
-* Database
-  * 
+* SQL
+  * Database
+  * Operator
+* GIT
+
   
 
 <br />
