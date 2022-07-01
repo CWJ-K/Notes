@@ -1,16 +1,45 @@
 <!-- omit in toc -->
 # Introduction
+How to use SQL Database statements?
 
 <br />
 
 <!-- omit in toc -->
 # Table of Contents
+- [Fundamental Concepts](#fundamental-concepts)
+  - [1. Injection](#1-injection)
+    - [1.1. Protection](#11-protection)
+  - [2. **hosting**](#2-hosting)
+  - [3. Data types](#3-data-types)
+  - [4. Schema](#4-schema)
+    - [4.1. Constraints](#41-constraints)
+- [SQL Statements](#sql-statements)
+  - [1. Drop](#1-drop)
+  - [2. Delete](#2-delete)
+  - [3. Truncate](#3-truncate)
+  - [4. Create](#4-create)
+    - [4.1. CREATE OR REPLACE TABLE](#41-create-or-replace-table)
+  - [5. Backup](#5-backup)
+    - [5.1. backup with differential](#51-backup-with-differential)
+  - [6. Alter](#6-alter)
+  - [7. View](#7-view)
+  - [8. Constraints](#8-constraints)
+    - [8.1. Not Null](#81-not-null)
+    - [8.2. Unique](#82-unique)
+    - [8.3. Primary key](#83-primary-key)
+    - [8.4. Foreign Key](#84-foreign-key)
+    - [8.5. check](#85-check)
+    - [8.6. Default](#86-default)
+    - [8.7. index](#87-index)
+    - [8.8. auto increment](#88-auto-increment)
+- [Comparison](#comparison)
+  - [1. Drop vs Delete vs Truncate](#1-drop-vs-delete-vs-truncate)
 
 <br />
 
-
 # Fundamental Concepts
-## Injection
+
+## 1. Injection
 * Web Page - code injection
   * web hacking techniques that may destroy databases
   * use `or` and `functions are true` to get all data <br />
@@ -24,7 +53,7 @@
 
 <br />
 
-### Protection
+### 1.1. Protection
 * SQL Parameters
   * parameters are represented in the SQL statement by a @ marker
   * SQL engine checks each parameter to ensure that it is correct for its column and is treated literally
@@ -39,13 +68,13 @@ db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 
 <br />
 
-## **hosting**
+## 2. **hosting**
 * store (a website or other data) on a server or other computer so that it can be accessed over the internet
 * e.g. MS SQL sever, oracle, mysql
 
 <br />
 
-## Data types
+## 3. Data types
 > Data types might have different names in different database. And even if the name is the same, the size and other details may be different! Always check the documentation!
 
 * data types affect [memory usage](https://shanewelgama.com/2020/08/16/tinyint-vs-smallint-vs-int-vs-bigint-does-size-matter/) a lot, be careful to choose
@@ -56,10 +85,12 @@ db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 
 <br />
 
-## Schema
+## 4. Schema
 > Postgre: `set schema myschema` is an alias to `SET search_path TO myschema`; is not available in POSTGRES 8.x.
 
-### Constraints
+<br />
+
+### 4.1. Constraints
 * limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
   
 |Constraint|Meaning|
@@ -73,13 +104,11 @@ db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 |`DEFAULT`|Sets a default value for a column if no value is specified|
 |`CREATE INDEX`|Used to create and retrieve data from the database very quickly|
 
-
-
-
+<br />
 
 # SQL Statements
 
-## Drop
+## 1. Drop
 * affect schema and data
   * delete a column in a table
   * others related to schema changes
@@ -95,7 +124,7 @@ db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 
 <br />
 
-## Delete
+## 2. Delete
 * only for data, no schema affected
   * delete existing records in a table 
   * deletes all rows in the "Customers" table, without deleting the table. This means that the table structure, attributes, and indexes will be intact
@@ -107,7 +136,7 @@ db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 
 <br />
 
-## Truncate
+## 3. Truncate
 * drop all data, not affect schemas
   ```SQL
   TRUNCATE TABLE categories
@@ -116,10 +145,10 @@ db.Execute(txtSQL,txtNam,txtAdd,txtCit);
 <br />
 
 
-## Create
+## 4. Create
 * new database, new table
 
-### CREATE OR REPLACE TABLE
+### 4.1. CREATE OR REPLACE TABLE
 
 ```SQL
 CREATE DATABASE testDB
@@ -133,7 +162,7 @@ CREATE TABLE Persons(
 
 <br />
 
-## Backup
+## 5. Backup
 * Backup Database: create a full backup of an existing SQL database
 
 ```SQL
@@ -143,7 +172,7 @@ TO DISK = 'D\backup\testDB.bak'
 
 ```
 
-### backup with differential
+### 5.1. backup with differential
 * only backs up the parts of the database that have changed since the last full database backup.
 
 ```SQL
@@ -153,7 +182,7 @@ WITH DIFFERENTIAL
 ```
 <br />
 
-## Alter
+## 6. Alter
 * add, delete, or modify columns or constraints in an existing table 
 > not data itself
 * **modify**: change the data type of a column
@@ -173,7 +202,7 @@ MODIFY COLUMN column_name datatype
 
 ```
 
-## View
+## 7. View
 * a virtual table based on the result-set of an SQL statement
 * Commonly used by analysts 
 
@@ -197,8 +226,9 @@ DROP VIEW [Brazil Customers]
 
 <br />
 
-## Constraints
-### Not Null
+## 8. Constraints
+
+### 8.1. Not Null
 ```sql
 ALTER TABLE Persons
 MODIFY Age int NOT NULL
@@ -206,36 +236,37 @@ MODIFY Age int NOT NULL
 ```
 <br />
 
-### Unique
+### 8.2. Unique
 
 <br />
 
-### Primary key
+### 8.3. Primary key
 
 <br />
 
-### Foreign Key
+### 8.4. Foreign Key
 
 <br />
 
-### check
+### 8.5. check
 
 <br />
 
-### Default
+### 8.6. Default
 
 <br />
 
-### index
+### 8.7. index
 
 <br />
 
-### auto increment
+### 8.8. auto increment
 
 <br />
 
 # Comparison
-## Drop vs Delete vs Truncate
+
+## 1. Drop vs Delete vs Truncate
 |Statement|Meaning|
 |:---:|:---|
 |drop|affect schema and data|
